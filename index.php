@@ -74,7 +74,11 @@ foreach ($hotels as $hotel) {
     $distance = $hotel['distance_to_center'];
 };
 
-$minVote = $_GET['vote'];
+if (array_key_exists('vote', $_GET)) {
+    $minVote = $_GET['vote'];
+} else {
+    $minVote = 0;
+}
 
 echo '</pre>';
 
@@ -99,14 +103,14 @@ echo '</pre>';
         <form method="GET">
             <div class="mb-3">
                 <label for="vote" class="form-label">Vote</label>
-                <input type="number" value="0" class="form-control w-25" name="vote" id="vote" placeholder="Insert a vote from 1 to 5">
+                <input type="number" class="form-control w-25" name="vote" id="vote" placeholder="Insert a vote from 1 to 5">
                 <small>Insert a vote from 1 to 5 to filter Hotels</small>
             </div>
             <!-- /input vote -->
 
             <div class="d-flex gap-4">
                 <button type="submit" class="btn rounded-4 btn-primary">Submit</button>
-                <button type="reset" class="btn rounded-4 btn-secondary">Reset</button>
+                <button type="reset" class="btn rounded-4 btn-warning">Reset</button>
             </div>
             <!-- /buttons -->
         </form>
