@@ -98,9 +98,17 @@ echo '</pre>';
 
 <body>
 
-    <div class="container">
-
+    <div class="container py-5">
+        <h1 class="mb-4">PHP Hotels</h1>
         <form method="GET">
+            <div class="mb-3 d-flex gap-2">
+                <input type="radio" id="parkingPresent" name="parkingForm" value="present">
+                <label for="parkingPresent">Parking present</label><br>
+                <input type="radio" id="parkingAbsent" name="parkingForm" value="absent">
+                <label for="parkingAbsent">Parking absent</label><br>
+            </div>
+            <!-- /input radio parking -->
+
             <div class="mb-3">
                 <label for="vote" class="form-label">Vote</label>
                 <input type="number" class="form-control w-25" name="vote" id="vote" placeholder="Insert a vote from 1 to 5">
