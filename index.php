@@ -65,17 +65,17 @@ echo '<pre>';
 
 // var_dump($hotels);
 
-// foreach ($hotels as $hotel) {
-//     // var_dump($hotel['name']);
-//     // var_dump($hotel['description']);
-//     // var_dump($hotel['parking']);
-//     // var_dump($hotel['vote']);
-//     // var_dump($hotel['distance_to_center']);
-//     foreach ($hotel as $key => $value) {
-//         var_dump($key);
-//         var_dump($value);
-//     }
-// };
+foreach ($hotels as $hotel) {
+    // var_dump($hotel['name']);
+    // var_dump($hotel['description']);
+    // var_dump($hotel['parking']);
+    // var_dump($hotel['vote']);
+    // var_dump($hotel['distance_to_center']);
+    // foreach ($hotel as $key => $value) {
+    //     // var_dump($key);
+    //     // var_dump($value);
+    // }
+};
 
 echo '</pre>';
 ?>
@@ -95,18 +95,27 @@ echo '</pre>';
 <body>
 
     <div class="container">
-        <div class="card p-3">
-            <?php foreach ($hotels as $hotel) :  ?>
-                <h5><?= $hotel['name'] ?></h5>
-                <ul>
-                    <li> <?= $hotel['description'] ?></li>
-                    <li> <?= $hotel['parking'] ?></li>
-                    <li> <?= $hotel['vote'] ?></li>
-                    <li> <?= $hotel['distance_to_center'] ?></li>
-                </ul>
+        <table class="table table-dark table-striped mt-5">
+            <thead>
+                <tr>
+                    <?php foreach ($hotel as $key => $value) :  ?>
+                        <th class="text-warning" scope="col"><?= $key ?></th>
+                    <?php endforeach; ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($hotels as $hotel) :  ?>
+                    <tr>
+                        <th scope="row"><?= $hotel['name'] ?></th>
+                        <td><?= $hotel['description'] ?> </td>
+                        <td><?= $hotel['parking'] ?> </td>
+                        <td><?= $hotel['vote'] ?> </td>
+                        <td><?= $hotel['distance_to_center'] ?> </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
 
-            <?php endforeach; ?>
-        </div>
+        </table>
     </div>
 
 
