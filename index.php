@@ -21,6 +21,7 @@ Se non viene specificato nessun filtro, visualizzare come in precedenza tutti gl
 
 */
 
+//array
 $hotels = [
 
     [
@@ -60,24 +61,23 @@ $hotels = [
     ],
 
 ];
+//end array
 
 echo '<pre>';
 
-// var_dump($hotels);
 
 foreach ($hotels as $hotel) {
-    // var_dump($hotel['name']);
-    // var_dump($hotel['description']);
-    // var_dump($hotel['parking']);
-    // var_dump($hotel['vote']);
-    // var_dump($hotel['distance_to_center']);
-    // foreach ($hotel as $key => $value) {
-    //     // var_dump($key);
-    //     // var_dump($value);
-    // }
+    $name = $hotel['name'];
+    $description = $hotel['description'];
+    $parking = $hotel['parking'];
+    $vote = $hotel['vote'];
+    $distance = $hotel['distance_to_center'];
 };
 
+$minVote = $_GET['vote'];
+
 echo '</pre>';
+
 ?>
 
 <!DOCTYPE html>
@@ -95,6 +95,23 @@ echo '</pre>';
 <body>
 
     <div class="container">
+
+        <form method="GET">
+            <div class="mb-3">
+                <label for="vote" class="form-label">Vote</label>
+                <input type="number" value="0" class="form-control w-25" name="vote" id="vote" placeholder="Insert a vote from 1 to 5">
+                <small>Insert a vote from 1 to 5 to filter Hotels</small>
+            </div>
+            <!-- /input vote -->
+
+            <div class="d-flex gap-4">
+                <button type="submit" class="btn rounded-4 btn-primary">Submit</button>
+                <button type="reset" class="btn rounded-4 btn-secondary">Reset</button>
+            </div>
+            <!-- /buttons -->
+        </form>
+        <!-- /form -->
+
         <table class="table table-dark table-striped mt-5">
             <thead>
                 <tr>
@@ -105,13 +122,15 @@ echo '</pre>';
             </thead>
             <tbody>
                 <?php foreach ($hotels as $hotel) :  ?>
-                    <tr>
-                        <th scope="row"><?= $hotel['name'] ?></th>
-                        <td><?= $hotel['description'] ?> </td>
-                        <td><?= $hotel['parking'] ?> </td>
-                        <td><?= $hotel['vote'] ?> </td>
-                        <td><?= $hotel['distance_to_center'] ?> </td>
-                    </tr>
+                    <?php if ($hotel['vote'] >= $minVote) : ?>
+                        <tr>
+                            <th scope="row"><?= $hotel['name'] ?></th>
+                            <td><?= $hotel['description'] ?> </td>
+                            <td><?= $hotel['parking'] ?> </td>
+                            <td><?= $hotel['vote'] ?> </td>
+                            <td><?= $hotel['distance_to_center'] ?> </td>
+                        </tr>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </tbody>
 
