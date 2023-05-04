@@ -63,7 +63,19 @@ $hotels = [
 
 echo '<pre>';
 
-var_dump($hotels);
+// var_dump($hotels);
+
+// foreach ($hotels as $hotel) {
+//     // var_dump($hotel['name']);
+//     // var_dump($hotel['description']);
+//     // var_dump($hotel['parking']);
+//     // var_dump($hotel['vote']);
+//     // var_dump($hotel['distance_to_center']);
+//     foreach ($hotel as $key => $value) {
+//         var_dump($key);
+//         var_dump($value);
+//     }
+// };
 
 echo '</pre>';
 ?>
@@ -81,6 +93,21 @@ echo '</pre>';
 </head>
 
 <body>
+
+    <div class="container">
+        <div class="card p-3">
+            <?php foreach ($hotels as $hotel) :  ?>
+                <h5><?= $hotel['name'] ?></h5>
+                <ul>
+                    <li> <?= $hotel['description'] ?></li>
+                    <li> <?= $hotel['parking'] ?></li>
+                    <li> <?= $hotel['vote'] ?></li>
+                    <li> <?= $hotel['distance_to_center'] ?></li>
+                </ul>
+
+            <?php endforeach; ?>
+        </div>
+    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
