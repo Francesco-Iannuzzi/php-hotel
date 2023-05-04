@@ -128,9 +128,13 @@ echo '</pre>';
                 <?php foreach ($hotels as $hotel) :  ?>
                     <?php if ($hotel['vote'] >= $minVote) : ?>
                         <tr>
-                            <th scope="row"><?= $hotel['name'] ?></th>
+                            <th scope="row" class="text-primary"><?= $hotel['name'] ?></th>
                             <td><?= $hotel['description'] ?> </td>
-                            <td><?= $hotel['parking'] ?> </td>
+                            <?php if ($hotel['parking']) : ?>
+                                <td><?= 'Present' ?> </td>
+                            <?php else : ?>
+                                <td><?= 'Absent' ?> </td>
+                            <?php endif; ?>
                             <td><?= $hotel['vote'] ?> </td>
                             <td><?= $hotel['distance_to_center'] ?> </td>
                         </tr>
